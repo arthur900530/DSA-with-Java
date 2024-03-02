@@ -1,1 +1,3 @@
-Arrays_and_Linked_Lists/*.class
+*/*.class
+*.class
+*.java
