@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package Stacks;
 
 import java.nio.channels.IllegalSelectorException;
 

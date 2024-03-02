@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package Stacks;
 import LinkedLists.SinglyLinkedList;
 
 public class LinkedStack<E> implements Stack<E> {

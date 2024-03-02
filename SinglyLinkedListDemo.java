@@ -1,3 +1,4 @@
+import LinkedLists.SinglyLinkedList;
 public class SinglyLinkedListDemo {
     public static void main(String[] args) {
         // Create a SinglyLinkedList instance

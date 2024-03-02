@@ -1,4 +1,4 @@
-package StacksAndQueues;
+package Stacks;
 
 public interface Stack<E> {
     int size();
