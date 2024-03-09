@@ -1,5 +1,8 @@
 package Lists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import org.w3c.dom.Node;
 
 public class LinkedPositionalList<E> implements PositionalList<E> {
@@ -112,7 +115,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         return temp;
     }
     
-    public E remove(Position<E> p, E e) throws IllegalArgumentException{
+    public E remove(Position<E> p) throws IllegalArgumentException{
         Node<E> node = validate(p);
         Node<E> predecessor = node.getPrev();
         Node<E> successor = node.getNext();
@@ -125,4 +128,51 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         node.setNext(null);
         return temp;
     }
+
+    // Position Iterator
+    private class PositionIterator implements Iterator<Position<E>> {
+        private Position<E> cursor = first();
+        private Position<E> recent = null;
+
+        public boolean hasNext(){return (cursor != null);}
+
+        public Position<E> next() throws NoSuchElementException{
+            if (cursor == null) throw new NoSuchElementException("No element left");
+            recent = cursor;
+            cursor = after(cursor);
+            return recent;
+        }
+
+        public void remove() throws IllegalStateException{
+            if (recent == null) throw new IllegalStateException("Nothing to remove");
+            LinkedPositionalList.this.remove(recent);
+            recent = null;
+        }
+    }
+
+    private class PositionIterable implements Iterable<Position<E>> {
+        public Iterator<Position<E>> iterator(){
+            return new PositionIterator();
+        }
+    }
+
+    public Iterable<Position<E>> positions(){
+        return new PositionIterable();
+    }
+
+    // Element Iterator
+    private class ElementIterator implements Iterator<E> {
+        Iterator<Position<E>> posIterator = new PositionIterator();
+        public boolean hasNext() {return posIterator.hasNext();}
+
+        public E next() {
+            return posIterator.next().getElement();
+        }
+
+        public void remove() {
+            posIterator.remove();
+        }      
+    }
+
+    public Iterator<E> iterator(){return new ElementIterator();}
 }
