@@ -5,8 +5,22 @@ import java.util.Comparator;
 
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
+    
     public HeapPriorityQueue(){super();}
     public HeapPriorityQueue(Comparator<K> comp){super(comp);}
+
+    public HeapPriorityQueue(K[] keys, V[] values){
+        super();
+        for (int j = 0; j < Math.min(keys.length, values.length); j++)
+            heap.add(new PQEntry<>(keys[j], values[j]));
+        heapify();
+    }
+
+    protected void heapify(){
+        int startIndex = parent(size() - 1);
+        for (int j = startIndex; j >= 0; j--)
+            downheap(j);
+    }
 
     protected int parent(int j){return (j - 1) / 2;}
     protected int left(int j){return 2 * j + 1;}
