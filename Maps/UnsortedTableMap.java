@@ -64,4 +64,8 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
     }
 
     public Iterable<Entry<K, V>> entrySet(){return new EntryIterable();}
+
+    public boolean isEmpty() {
+        return table.size() == 0;
+    }
 }
