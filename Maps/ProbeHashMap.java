@@ -23,8 +23,10 @@ public class ProbeHashMap<K,V> extends AbstractHashMap<K,V> {
         int j = h;
         do {
             if (isAvailable(j)){
-                if (avail == -1) avail = j;
-                if (table[j] == null) break;
+                if (avail == -1) 
+                    avail = j;
+                if (table[j] == null) 
+                    break;
             } else if (table[j].getKey().equals(k))
                 return j;
             j = (j + 1) % capacity;
