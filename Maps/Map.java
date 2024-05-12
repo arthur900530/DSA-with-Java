@@ -1,4 +1,4 @@
-
+package Maps;
 
 import PriorityQueues.Entry;
 

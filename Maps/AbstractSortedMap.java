@@ -1,5 +1,6 @@
-import java.util.Comparator;
+package Maps;
 
+import java.util.Comparator;
 import PriorityQueues.DefaultComparator;
 import PriorityQueues.Entry;
 

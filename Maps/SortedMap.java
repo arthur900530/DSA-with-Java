@@ -1,3 +1,5 @@
+package Maps;
+
 import PriorityQueues.Entry;
 
 public interface SortedMap<K,V> extends Map<K,V>{
