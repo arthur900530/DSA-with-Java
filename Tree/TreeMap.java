@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 import Lists.Position;
 import PriorityQueues.Entry;
-import Tree.LinkedBinaryTree.Node;
 
 public class TreeMap<K, V> extends AbstractSortedMap<K,V>{
     protected static class BalanceableBinaryTree<K,V> extends LinkedBinaryTree<Entry<K,V>>{
